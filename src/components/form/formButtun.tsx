@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemButton from '@mui/material/ListItemButton';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
+// import ListItemText from '@mui/material/ListItemText';
+// import ListItemButton from '@mui/material/ListItemButton';
+// import List from '@mui/material/List';
+// import Divider from '@mui/material/Divider';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -13,6 +13,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import Slide from '@mui/material/Slide';
 import type { TransitionProps } from '@mui/material/transitions';
+import {DialogContent, DialogContentText,} from "@mui/material";
+import InputFactory from "../../utils/formUtils/inputFactory.tsx";
+
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -20,7 +23,7 @@ const Transition = React.forwardRef(function Transition(
     },
     ref: React.Ref<unknown>,
 ) {
-    return <Slide direction="right" ref={ref} {...props} />;
+    return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function FullScreenDialog() {
@@ -63,7 +66,7 @@ export default function FullScreenDialog() {
                         </Button>
                     </Toolbar>
                 </AppBar>
-                <List>
+                {/*<List>*/}
                     {/*<ListItemButton>*/}
                     {/*    <ListItemText primary="Phone ringtone" secondary="Titania" />*/}
                     {/*</ListItemButton>*/}
@@ -74,8 +77,35 @@ export default function FullScreenDialog() {
                     {/*        secondary="Tethys"*/}
                     {/*    />*/}
                     {/*</ListItemButton>*/}
+                    <DialogContent>
+                        <DialogContentText>
+                           {/*Нужно заполнить как минимум 5 полей, также можете добавить до 15 полей и также их заполнить.*/}
 
-                </List>
+                        </DialogContentText>
+                        <InputFactory minInput={5} maxInput={15} />
+                        {/*<TextField*/}
+                        {/*    autoFocus*/}
+                        {/*    required*/}
+                        {/*    margin="dense"*/}
+                        {/*    id="name"*/}
+                        {/*    name="email"*/}
+                        {/*    label="Email Address"*/}
+                        {/*    type="email"*/}
+                        {/*    fullWidth*/}
+                        {/*    variant="standard"*/}
+                        {/*/>*/}
+                        {/*<TextField*/}
+                        {/*    autoFocus*/}
+                        {/*    required*/}
+                        {/*    margin="dense"*/}
+                        {/*    id="name"*/}
+                        {/*    name="email"*/}
+                        {/*    label="Email"*/}
+                        {/*    fullWidth*/}
+                        {/*    variant="standard"*/}
+                        {/*/>*/}
+                    </DialogContent>
+                {/*</List>*/}
             </Dialog>
         </React.Fragment>
     );
