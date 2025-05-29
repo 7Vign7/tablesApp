@@ -1,6 +1,6 @@
 import {makeAutoObservable, runInAction} from "mobx";
 import type {Posts} from "../types/api/api.ts";
-import {getPosts} from "../api/getPosts.tsx";
+import {getTables} from "../api/getTables.tsx";
 import {fromPromise, type IPromiseBasedObservable} from "mobx-utils";
 // class PostStore {
 //     posts: Posts[] = [];
@@ -14,7 +14,7 @@ import {fromPromise, type IPromiseBasedObservable} from "mobx-utils";
 //         try{
 //             this.isLoading = true;
 //
-//             const res = await getPosts();
+//             const res = await getTables();
 //             runInAction(() => {
 //                 this.posts = res;
 //                 this.isLoading = false;
@@ -31,7 +31,7 @@ class PostStore {
         makeAutoObservable(this);
     }
     getPostAction = () =>{
-     this.posts = fromPromise(getPosts());
+     this.posts = fromPromise(getTables());
     }
 }
 export default new PostStore();

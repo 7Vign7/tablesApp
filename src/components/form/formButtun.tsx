@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import AppBar from '@mui/material/AppBar';
@@ -10,8 +10,10 @@ import AddIcon from '@mui/icons-material/Add';
 import Slide from '@mui/material/Slide';
 import type { TransitionProps } from '@mui/material/transitions';
 import {DialogContent, DialogContentText,} from "@mui/material";
-import InputFactory from "../../utils/formUtils/inputFactory.tsx";
+import FieldFactory from "../../utils/formUtils/fieldFactory.tsx";
 import formStore from "../../stores/formStore"
+import tablesStore from "../../stores/tablesStore"
+import {observer} from "mobx-react-lite";
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -21,28 +23,21 @@ const Transition = React.forwardRef(function Transition(
 ) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
-export default function FullScreenDialog() {
-    const {isOpen, toggleModal, resetForm} = formStore;
-    console.log(isOpen)
-    // const [open, setOpen] = useState(false);
-
-    // const handleClickOpen = () => {
-    //     setOpen(true);
-    // };
-    //
-    // const handleClose = () => {
-    //     setOpen(false);
-    // };
-
+const FullScreenDialog  = observer( () =>{
+    const {isOpen, openingSwitchModal, sendingTheForm} = formStore;
+    const {getMim} = tablesStore
+    useEffect(() => {
+        getMim()
+    }, []);
     return (
         <React.Fragment>
-            <Button variant='contained' onClick={toggleModal}>
+            <Button variant='contained' onClick={openingSwitchModal}>
                 Добавить запись в таблицу
             </Button>
             <Dialog
                 fullScreen
                 open={isOpen}
-                onClose={resetForm}
+                onClose={openingSwitchModal}
                 TransitionComponent={Transition}
             >
                 <AppBar sx={{ position: 'relative' }}>
@@ -50,7 +45,7 @@ export default function FullScreenDialog() {
                         <IconButton
                             edge="start"
                             color="inherit"
-                            onClick={resetForm}
+                            onClick={openingSwitchModal}
                             aria-label="close"
                         >
                             <CloseIcon />
@@ -58,52 +53,20 @@ export default function FullScreenDialog() {
                         <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
                             Форма для записи в таблицу
                         </Typography>
-                        <Button autoFocus color="inherit" onClick={resetForm}>
+                        <Button autoFocus color="inherit" onClick={sendingTheForm}>
                             <AddIcon fontSize="medium" />
                         </Button>
                     </Toolbar>
                 </AppBar>
-                {/*<List>*/}
-                    {/*<ListItemButton>*/}
-                    {/*    <ListItemText primary="Phone ringtone" secondary="Titania" />*/}
-                    {/*</ListItemButton>*/}
-                    {/*<Divider />*/}
-                    {/*<ListItemButton>*/}
-                    {/*    <ListItemText*/}
-                    {/*        primary="Default notification ringtone"*/}
-                    {/*        secondary="Tethys"*/}
-                    {/*    />*/}
-                    {/*</ListItemButton>*/}
                     <DialogContent>
                         <DialogContentText>
-                           {/*Нужно заполнить как минимум 5 полей, также можете добавить до 15 полей и также их заполнить.*/}
-
+                            Напиши тут что-то
                         </DialogContentText>
-                        <InputFactory minInput={5} maxInput={15} />
-                        {/*<TextField*/}
-                        {/*    autoFocus*/}
-                        {/*    required*/}
-                        {/*    margin="dense"*/}
-                        {/*    id="name"*/}
-                        {/*    name="email"*/}
-                        {/*    label="Email Address"*/}
-                        {/*    type="email"*/}
-                        {/*    fullWidth*/}
-                        {/*    variant="standard"*/}
-                        {/*/>*/}
-                        {/*<TextField*/}
-                        {/*    autoFocus*/}
-                        {/*    required*/}
-                        {/*    margin="dense"*/}
-                        {/*    id="name"*/}
-                        {/*    name="email"*/}
-                        {/*    label="Email"*/}
-                        {/*    fullWidth*/}
-                        {/*    variant="standard"*/}
-                        {/*/>*/}
+                        <FieldFactory minInput={5} maxInput={15} />
                     </DialogContent>
-                {/*</List>*/}
             </Dialog>
         </React.Fragment>
     );
-}
+});
+
+export default FullScreenDialog;
