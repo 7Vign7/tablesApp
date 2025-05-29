@@ -11,15 +11,27 @@ export class FormStore {
     }
 
     // Открытие/закрытие модалки
-    toggleModal = (open: boolean) => {
-        this.isOpen = open;
-        if (!open) this.resetForm();
+    toggleModal = () => {
+        // console.log(this.isOpen)
+        // switch(this.isOpen){
+        //     case false:
+        //         this.isOpen = true
+        //         break;
+        //     case true:
+        //         this.isOpen = false
+        //         this.resetForm()
+        // }
+        this.isOpen = true
     };
+    // test = () => {
+    //     this.isOpen = true
+    // }
 
     // Сброс формы
     resetForm = () => {
         this.fields = Array(5).fill("");
         this.errors = [];
+        this.isOpen = false;
     };
 
     // Изменение поля
