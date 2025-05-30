@@ -1,4 +1,3 @@
-import React, {useEffect} from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import AppBar from '@mui/material/AppBar';
@@ -12,7 +11,6 @@ import type { TransitionProps } from '@mui/material/transitions';
 import {DialogContent, DialogContentText,} from "@mui/material";
 import FieldFactory from "../../utils/formUtils/fieldFactory.tsx";
 import formStore from "../../stores/formStore"
-import tablesStore from "../../stores/tablesStore"
 import {observer} from "mobx-react-lite";
 
 const Transition = React.forwardRef(function Transition(
@@ -25,10 +23,6 @@ const Transition = React.forwardRef(function Transition(
 });
 const FullScreenDialog  = observer( () =>{
     const {isOpen, openingSwitchModal, sendingTheForm} = formStore;
-    const {getMim} = tablesStore
-    useEffect(() => {
-        getMim()
-    }, []);
     return (
         <React.Fragment>
             <Button variant='contained' onClick={openingSwitchModal}>

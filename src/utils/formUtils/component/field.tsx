@@ -1,17 +1,17 @@
 // import React, {ChangeEvent} from 'react';
 import {Box, TextField} from "@mui/material";
 import ButtonDeleteFields from "./ButtonDeleteFields.tsx";
-import type {propsFactoryComponent} from "../../types/utils.ts";
-import formStore from '../../stores/formStore'
+import type {propsFactoryComponent} from "../../../types/utils.ts";
+import formStore from '../../../stores/formStore.tsx'
 
-const FieldComponent = (props:propsFactoryComponent) => {
+const Field = (props:propsFactoryComponent) => {
     const {fieldNumber} = props;
     const {fields,setFieldValue,errors} = formStore
-    function test(i){
-        setFieldValue(fieldNumber,i.target.value);
-        // validateField(fieldNumber)
-        console.log(errors);
-    }
+    // function test(i){
+    //     setFieldValue(fieldNumber,i.target.value);
+    //     // validateField(fieldNumber)
+    //     console.log(errors);
+    // }
 
     return (
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -29,4 +29,4 @@ const FieldComponent = (props:propsFactoryComponent) => {
     );
 };
 
-export default FieldComponent;
+export default Field;

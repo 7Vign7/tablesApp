@@ -43,7 +43,7 @@ export class FormStore {
     // Изменение поля
     setFieldValue = (index: number, value: string) => {
         this.fields[index] = value;
-        this.validateField(index);
+        // this.validateField(index);
     };
 
     addFields = () => {

@@ -1,4 +1,4 @@
-import formStore from '../../stores/formStore'
+import formStore from '../../../stores/formStore.tsx'
 import {Box} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
