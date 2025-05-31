@@ -12,7 +12,7 @@ const App = () =>{
   return (
       <Box>
           <ModalForm/>
-          <TableVign/>
+          {/*<TableVign/>*/}
       </Box>
   )
 }
