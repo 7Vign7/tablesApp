@@ -1,3 +1,4 @@
+import React from "react";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import AppBar from '@mui/material/AppBar';
@@ -21,8 +22,8 @@ const Transition = React.forwardRef(function Transition(
 ) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
-const FullScreenDialog  = observer( () =>{
-    const {isOpen, openingSwitchModal, sendingTheForm} = formStore;
+const ModalForm  = observer( () =>{
+    const {isOpen, openingSwitchModal, sendingTheForm, isValid} = formStore;
     return (
         <React.Fragment>
             <Button variant='contained' onClick={openingSwitchModal}>
@@ -47,7 +48,7 @@ const FullScreenDialog  = observer( () =>{
                         <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
                             Форма для записи в таблицу
                         </Typography>
-                        <Button autoFocus color="inherit" onClick={sendingTheForm}>
+                        <Button disabled={!isValid} autoFocus color="inherit" onClick={sendingTheForm}>
                             <AddIcon fontSize="medium" />
                         </Button>
                     </Toolbar>
@@ -63,4 +64,4 @@ const FullScreenDialog  = observer( () =>{
     );
 });
 
-export default FullScreenDialog;
+export default ModalForm;

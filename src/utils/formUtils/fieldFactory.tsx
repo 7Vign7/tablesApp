@@ -10,7 +10,7 @@ const FieldFactory = observer((props:PropsInputFactory) => {
     setLimitations([minInput, maxInput]);
     return (
         <>
-            {fields.map((e,i) =>{
+            {fields.map((_, i) =>{
                 return (<Field key={i} fieldNumber={i} />)
             }
             )}

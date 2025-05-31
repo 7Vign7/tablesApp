@@ -1,18 +1,19 @@
-// import FullScreenDialog from "./components/form/modalForm.tsx";
-// import {useEffect} from "react";
-// import tableStore from "./stores/tableStore.tsx";
+import {useEffect} from "react";
+import tableStore from "./stores/tableStore.tsx";
 import TableVign from "./components/table/table.tsx";
+import ModalForm from "./components/form/modalForm.tsx";
+import {Box} from "@mui/material";
 
-function App(){
-  // const {getMim} = tableStore
-  // useEffect(() => {
-  //   getMim()
-  // }, []);
+const App = () =>{
+  const {getTable} = tableStore
+  useEffect(() => {
+      getTable()
+  }, []);
   return (
-    <>
-        {/*<FullScreenDialog/>*/}
-        <TableVign/>
-    </>
+      <Box>
+          <ModalForm/>
+          <TableVign/>
+      </Box>
   )
 }
 

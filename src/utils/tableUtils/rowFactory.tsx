@@ -1,19 +1,28 @@
-import React from 'react';
-import {TableCell, TableRow} from "@mui/material";
+import tableStore from "../../stores/tableStore.tsx";
+import TableRowVign from "./component/tableRowVign.tsx";
+import {observer} from "mobx-react-lite";
+import {Box, CircularProgress} from "@mui/material";
+import {useRef} from "react";
 
-const RowFactory = () => {
+const RowFactory = observer(() => {
+    const {table, isLoading} = tableStore
+    const loaderRef = useRef<HTMLDivElement>(null);
     return (
-        <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell>2</TableCell>
-            <TableCell>3</TableCell>
-            <TableCell>4</TableCell>
-            <TableCell>5</TableCell>
-            <TableCell>6</TableCell>
-            <TableCell>7</TableCell>
-            <TableCell>ХУУУУУУУУУУУЙ</TableCell>
-        </TableRow>
-    );
-};
+        <>
+            {
+                table.map((row)=>{
+                    return (
+                        <TableRowVign key={row.id} rowData={row} />
+                    )
+                })
+            }
+            <Box
+                ref={loaderRef}
+                 sx={{ py: 4, display: "grid", placeItems: "center"}}>
+                {isLoading && <CircularProgress/>}
+            </Box>
+        </>
+    )
+});
 
 export default RowFactory;

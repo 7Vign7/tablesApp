@@ -1,19 +1,20 @@
-import React from 'react';
 import {TableCell} from "@mui/material";
-
-const CallHeadFactory = () => {
+import tableStore from "../../stores/tableStore.tsx";
+import {observer} from "mobx-react-lite";
+const CallHeadFactory =  observer(() => {
+    const {maxNumberOfFields} = tableStore
     return (
         <>
-            <TableCell>1</TableCell>
-            <TableCell>2</TableCell>
-            <TableCell>3</TableCell>
-            <TableCell>4</TableCell>
-            <TableCell>5</TableCell>
-            <TableCell>6</TableCell>
-            <TableCell>7</TableCell>
-            <TableCell>8</TableCell>
+            {
+                Array(maxNumberOfFields).fill("").map((_, i) =>{
+                        return (
+                         <TableCell key={i}>{i+1}</TableCell>
+                     )
+                    }
+                )
+            }
         </>
     );
-};
+});
 
 export default CallHeadFactory;

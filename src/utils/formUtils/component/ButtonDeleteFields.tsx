@@ -2,7 +2,7 @@ import IconButton from "@mui/material/IconButton";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import formStore from '../../../stores/formStore.tsx'
 import type {propsFactoryComponent} from "../../../types/utils.ts";
-// import {observer} from "mobx-react-lite";
+
 
 const ButtonDeleteFields =(props:propsFactoryComponent) => {
     const {fieldNumber} = props;

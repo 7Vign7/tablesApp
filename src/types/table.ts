@@ -1,7 +1,7 @@
-type Range5to15 = 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
+import type {Range5to15} from "./utils.ts";
 
 export type Row = {
-    id: number
+    id?: number
     numberOfFields: Range5to15;
     fields: string[]
 }

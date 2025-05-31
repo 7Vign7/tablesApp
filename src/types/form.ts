@@ -1,6 +1,6 @@
 export type FormType = {
     fields: string[];
-    errors: string[];
+    errors: Record<number, string>;
     isOpen: boolean;
     limitations: [number,number?];
 }
