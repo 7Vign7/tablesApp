@@ -1,4 +1,4 @@
-import type {PropsInputFactory} from "../../types/utils.ts";
+import type {PropsInputFactory} from "../../types/utils.d.ts";
 import Field from "./component/field.tsx";
 import formStore from '../../stores/formStore'
 import {observer} from "mobx-react-lite";
@@ -10,10 +10,7 @@ const FieldFactory = observer((props:PropsInputFactory) => {
     setLimitations([minInput, maxInput]);
     return (
         <>
-            {fields.map((_, i) =>{
-                return (<Field key={i} fieldNumber={i} />)
-            }
-            )}
+            {fields.map((_, i) => (<Field key={i} fieldNumber={i} />))}
             <ButtonAddFields/>
         </>
     );

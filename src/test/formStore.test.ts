@@ -1,6 +1,6 @@
 import formStore from '../stores/formStore.tsx';
 import { postRow } from '../api/post/postRow';
-import type {FormStore} from '../types/form.ts';
+import type {FormStore} from '../types/form.d.ts';
 
 
 jest.mock('../api/post/postRow', () => ({

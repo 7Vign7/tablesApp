@@ -1,5 +1,5 @@
 import {TableCell, TableRow} from "@mui/material";
-import type {PropsRow} from "../../../types/utils.ts";
+import type {PropsRow} from "../../../types/utils.d.ts";
 
 const TableRowVign = (props:PropsRow) => {
     const {rowData} = props;
@@ -9,7 +9,8 @@ const TableRowVign = (props:PropsRow) => {
             {fields.map((cell,number) => (
                 <TableCell key={number}>
                     {cell}
-                </TableCell>))
+                </TableCell>
+            ))
             }
         </TableRow>
     );

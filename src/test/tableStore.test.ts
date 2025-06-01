@@ -1,7 +1,7 @@
 import tableStore from '../stores/tableStore';
 import { getLimitedTable } from '../api/get/getLimitedTable';
 import { checkMaxNumberOfFields } from '../utils/utils';
-import type {TableStore} from "../types/table.ts";
+import type {TableStore} from "../types/table.d.ts";
 
 
 jest.mock('../api/get/getLimitedTable');

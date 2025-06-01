@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import RowFactory from '../utils/tableUtils/rowFactory.tsx';
 import tableStore from "../stores/tableStore";
-import type {TableStore, Row} from "../types/table.ts";
+import type {TableStore, Row} from "../types/table.d.ts";
 
 jest.mock("../stores/tableStore", () => ({
     __esModule: true,

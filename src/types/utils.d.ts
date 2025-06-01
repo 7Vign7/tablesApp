@@ -1,4 +1,4 @@
-import type {Row} from "./table.ts";
+import type {Row} from "./table.d.ts";
 export type PropsInputFactory = {
     maxInput: number;
     minInput: number;

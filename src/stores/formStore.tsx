@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import type {FormType} from "../types/form"
 import {postRow} from "../api/post/postRow.ts";
-import type {Range5to15} from "../types/utils.ts";
+import type {Range5to15} from "../types/utils.d.ts";
 
 type fieldsType = FormType['fields']
 type errorsType = FormType['errors']
@@ -12,7 +12,7 @@ class FormStore {
     fields: fieldsType = Array(5).fill("");
     errors: errorsType = {};
     isOpen: isOpenType = false;
-    limitations: limitationsType = [0];
+    limitations: limitationsType = [0,Infinity];
 
     constructor() {
         makeAutoObservable(this);
@@ -37,7 +37,7 @@ class FormStore {
         this.fields = Array(5).fill("");
         this.errors = {};
         this.isOpen = false;
-        this.limitations = [0];
+        this.limitations = [0, Infinity];
     };
     // Изменение поля
     setFieldValue = (index: number, value: string) => {

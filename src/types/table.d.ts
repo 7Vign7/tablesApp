@@ -1,4 +1,4 @@
-import type {Range5to15} from "./utils.ts";
+import type {Range5to15} from "./utils.d.ts";
 import tableStore from "../stores/tableStore.tsx"
 export type Row = {
     id?: string
