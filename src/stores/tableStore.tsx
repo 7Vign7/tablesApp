@@ -13,20 +13,26 @@ export class TableStore {
         makeAutoObservable(this);
     }
 
+    private updateMaxNumberOfFields(newRows: Row[]){
+        if(this.maxNumberOfFields !== 15){
+            this.maxNumberOfFields = checkMaxNumberOfFields(this.maxNumberOfFields,newRows) //подумать куда грамотнее это можно засунуть, а то какой-то калхоз
+        }
+    }
+
     getTable= async ()=>{
         if(this.isLoading)return;
         try{
             this.isLoading = true;
-            const res = await getLimitedTable(this.lastRow)
-            console.log(res.headers['x-total-count']);
+            const res:Row[] = await getLimitedTable(this.lastRow)
             const newTable = [...this.table,...res];
-            this.lastRow = newTable.length
-            console.log(this.lastRow);
             runInAction(()=>{
-                this.table = newTable
-                if(this.maxNumberOfFields !== 15){
-                    this.maxNumberOfFields = checkMaxNumberOfFields(this.maxNumberOfFields,res) //подумать куда грамотнее это можно засунуть, а то какой-то калхоз
+                if(res.length === 0){
+                    this.notNewRow = true;
+                    return;
                 }
+                this.table = newTable
+                this.lastRow = this.table.length;
+                this.updateMaxNumberOfFields(res);
             })
         }
         catch(error){
@@ -35,6 +41,11 @@ export class TableStore {
         finally {
             this.isLoading = false;
         }
+    }
+    checkNewRow = async () =>{
+        const res = await getLimitedTable(this.lastRow)
+        this.notNewRow = res.length === 0
+        console.log(this.notNewRow)
     }
 }
 

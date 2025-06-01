@@ -1,5 +1,4 @@
 import React from "react";
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,6 +12,7 @@ import {DialogContent, DialogContentText,} from "@mui/material";
 import FieldFactory from "../../utils/formUtils/fieldFactory.tsx";
 import formStore from "../../stores/formStore"
 import {observer} from "mobx-react-lite";
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -26,9 +26,9 @@ const ModalForm  = observer( () =>{
     const {isOpen, openingSwitchModal, sendingTheForm, isValid} = formStore;
     return (
         <React.Fragment>
-            <Button variant='contained' onClick={openingSwitchModal}>
-                Добавить запись в таблицу
-            </Button>
+            <IconButton size='medium' color='primary' onClick={openingSwitchModal}>
+                <LibraryAddIcon/>
+            </IconButton>
             <Dialog
                 fullScreen
                 open={isOpen}
@@ -43,19 +43,19 @@ const ModalForm  = observer( () =>{
                             onClick={openingSwitchModal}
                             aria-label="close"
                         >
-                            <CloseIcon />
+                            <CloseIcon fontSize="large" />
                         </IconButton>
-                        <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+                        <Typography sx={{ ml: 2, flex: 1 }}  variant="h5" component="div">
                             Форма для записи в таблицу
                         </Typography>
-                        <Button disabled={!isValid} autoFocus color="inherit" onClick={sendingTheForm}>
-                            <AddIcon fontSize="medium" />
-                        </Button>
+                        <IconButton disabled={!isValid}  autoFocus color="inherit" onClick={sendingTheForm}>
+                            <AddIcon fontSize="large" />
+                        </IconButton>
                     </Toolbar>
                 </AppBar>
                     <DialogContent>
                         <DialogContentText>
-                            Напиши тут что-то
+                            Заполните минимум 5 полей
                         </DialogContentText>
                         <FieldFactory minInput={5} maxInput={15} />
                     </DialogContent>
