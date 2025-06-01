@@ -3,7 +3,7 @@ import {getLimitedTable} from "../api/get/getLimitedTable.tsx";
 import type {Row} from "../types/table"
 import {checkMaxNumberOfFields} from "../utils/utils.ts";
 
-export class TableStore {
+class TableStore {
     table: Row[] = []
     isLoading: boolean = false;
     lastRow = 0;
@@ -12,13 +12,19 @@ export class TableStore {
     constructor() {
         makeAutoObservable(this);
     }
-
-    private updateMaxNumberOfFields(newRows: Row[]){
+    //Обновляем максимальное кол. полей в таблице
+    updateMaxNumberOfFields(newRows: Row[]){
         if(this.maxNumberOfFields !== 15){
             this.maxNumberOfFields = checkMaxNumberOfFields(this.maxNumberOfFields,newRows) //подумать куда грамотнее это можно засунуть, а то какой-то калхоз
         }
     }
-
+    resetTable() {
+        this.table = []
+        this.isLoading = false;
+        this.lastRow = 0;
+        this.maxNumberOfFields = 5
+        this.notNewRow = false;
+    }
     getTable= async ()=>{
         if(this.isLoading)return;
         try{
@@ -37,10 +43,10 @@ export class TableStore {
         }
         catch(error){
             console.error(`Что-то не так с сервером:( Ошибка:${error}`)
-        }
-        finally {
+        }finally {
             this.isLoading = false;
         }
+
     }
     checkNewRow = async () =>{
         const res = await getLimitedTable(this.lastRow)

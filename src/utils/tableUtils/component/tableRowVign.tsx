@@ -1,12 +1,7 @@
 import {TableCell, TableRow} from "@mui/material";
-import type {Row} from "../../../types/table.ts";
+import type {PropsRow} from "../../../types/utils.ts";
 
-type Propsuk = {
-    key: string;
-    rowData: Row;
-}
-
-const TableRowVign = (props:Propsuk) => {
+const TableRowVign = (props:PropsRow) => {
     const {rowData} = props;
     const {fields} = rowData;
     return (

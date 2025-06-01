@@ -26,7 +26,7 @@ const RowFactory = observer(() => {
             {
                 table.map((row)=>{
                     return (
-                        <TableRowVign key={row.id} rowData={row} />
+                        <TableRowVign key={row.id as string} rowData={row} />
                     )
                 })
             }

@@ -8,7 +8,7 @@ type errorsType = FormType['errors']
 type isOpenType = FormType['isOpen']
 type limitationsType = FormType['limitations']
 
-export class FormStore {
+class FormStore {
     fields: fieldsType = Array(5).fill("");
     errors: errorsType = {};
     isOpen: isOpenType = false;
