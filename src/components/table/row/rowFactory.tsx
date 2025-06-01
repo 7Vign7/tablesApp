@@ -1,5 +1,5 @@
-import tableStore from "../../stores/tableStore.tsx";
-import TableRowVign from "./component/tableRowVign.tsx";
+import tableStore from "../../../stores/tableStore.tsx";
+import TableRowVign from "./tableRowVign.tsx";
 import {observer} from "mobx-react-lite";
 import {CircularProgress, TableRow} from "@mui/material";
 import  {useEffect, useRef} from "react";

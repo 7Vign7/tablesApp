@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import type {FormType} from "../types/form"
 import {postRow} from "../api/post/postRow.ts";
-import type {Range5to15} from "../types/utils.d.ts";
+import type {RangeFiveToFifteen} from "../types/utils";
 
 type fieldsType = FormType['fields']
 type errorsType = FormType['errors']
@@ -72,7 +72,7 @@ class FormStore {
     sendingTheForm = async () =>{
         try {
             await postRow({
-                "numberOfFields": this.fields.length as Range5to15,
+                "numberOfFields": this.fields.length as RangeFiveToFifteen,
                 "fields": this.fields
             })
             this.resetForm()

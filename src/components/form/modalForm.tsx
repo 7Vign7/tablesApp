@@ -9,7 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Slide from '@mui/material/Slide';
 import type { TransitionProps } from '@mui/material/transitions';
 import {DialogContent, DialogContentText,} from "@mui/material";
-import FieldFactory from "../../utils/formUtils/fieldFactory.tsx";
+import FieldFactory from "./field/fieldFactory.tsx";
 import formStore from "../../stores/formStore"
 import {observer} from "mobx-react-lite";
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';

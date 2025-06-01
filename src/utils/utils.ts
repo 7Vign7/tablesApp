@@ -1,7 +1,7 @@
 import type {Row} from "../types/table.d.ts";
-import type {Range5to15} from "../types/utils.d.ts";
+import type {RangeFiveToFifteen} from "../types/utils.d.ts";
 
-export function checkMaxNumberOfFields(nowMaxNumberOfFields:Range5to15,table:Row[]):Range5to15{
+export function checkMaxNumberOfFields(nowMaxNumberOfFields:RangeFiveToFifteen, table:Row[]):RangeFiveToFifteen{
         let newMaxNumberOfFields = nowMaxNumberOfFields;
         for (const NumberOfFields of table) {
             if (NumberOfFields.numberOfFields === 15) {

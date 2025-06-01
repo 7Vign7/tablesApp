@@ -1,5 +1,5 @@
 import {TableCell} from "@mui/material";
-import tableStore from "../../stores/tableStore.tsx";
+import tableStore from "../../../stores/tableStore.tsx";
 import {observer} from "mobx-react-lite";
 const CallHeadFactory =  observer(() => {
     const {maxNumberOfFields} = tableStore

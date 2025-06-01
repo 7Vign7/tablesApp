@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor, act } from '@testing-library/react';
-import RowFactory from '../utils/tableUtils/rowFactory.tsx';
+import RowFactory from '../components/table/row/rowFactory.tsx';
 import tableStore from "../stores/tableStore";
 import type {TableStore, Row} from "../types/table.d.ts";
 
@@ -14,7 +14,7 @@ jest.mock("../stores/tableStore", () => ({
         resetTable: jest.fn()
     }
 }));
-jest.mock("../utils/tableUtils/component/tableRowVign", () => ({
+jest.mock("../components/table/row/tableRowVign.tsx", () => ({
     __esModule: true,
     default: ({ rowData }: { rowData: Row }) => (
         <div data-testid="table-row-vign" data-id={rowData.id} />
@@ -34,7 +34,7 @@ describe('RowFactory Компонент', () => {
             observe: jest.fn(),
             disconnect: jest.fn()
         };
-        (global as unknown).IntersectionObserver = jest.fn(() => observer);
+        global.IntersectionObserver = (() => observer) as unknown as typeof IntersectionObserver;
         (tableStore as TableStore).table = [];
         (tableStore as TableStore).isLoading = false;
         (tableStore as TableStore).notNewRow = false;

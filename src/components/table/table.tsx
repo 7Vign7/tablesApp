@@ -1,7 +1,7 @@
 // import React from 'react';
 import {Paper, TableBody, TableContainer, TableRow, Table, TableHead, TableCell} from "@mui/material";
-import RowFactory from "../../utils/tableUtils/rowFactory.tsx";
-import FieldHeadFactory from "../../utils/tableUtils/fieldHeadFactory.tsx";
+import RowFactory from "./row/rowFactory.tsx";
+import FieldHeadFactory from "./field/fieldHeadFactory.tsx";
 import {observer} from "mobx-react-lite";
 import ModalForm from "../form/modalForm.tsx";
 import tableStore from "../../stores/tableStore.tsx";

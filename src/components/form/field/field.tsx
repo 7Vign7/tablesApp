@@ -1,6 +1,6 @@
 import type {ChangeEvent} from 'react';
 import {Box, TextField} from "@mui/material";
-import ButtonDeleteFields from "./ButtonDeleteFields.tsx";
+import ButtonDeleteFields from "../button/ButtonDeleteFields.tsx";
 import type {propsFactoryComponent} from "../../../types/utils.d.ts";
 import formStore from '../../../stores/formStore.tsx'
 

@@ -1,8 +1,8 @@
-import type {PropsInputFactory} from "../../types/utils.d.ts";
-import Field from "./component/field.tsx";
-import formStore from '../../stores/formStore'
+import type {PropsInputFactory} from "../../../types/utils.d.ts";
+import Field from "./field.tsx";
+import formStore from '../../../stores/formStore.tsx'
 import {observer} from "mobx-react-lite";
-import ButtonAddFields from "./component/ButtonAddFields.tsx";
+import ButtonAddFields from "../button/ButtonAddFields.tsx";
 
 const FieldFactory = observer((props:PropsInputFactory) => {
     const {minInput, maxInput} = props;
