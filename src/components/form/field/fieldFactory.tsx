@@ -1,4 +1,4 @@
-import type {PropsInputFactory} from "../../../types/utils.d.ts";
+import type {PropsInputFactory} from "../../../types/props.d.ts";
 import Field from "./field.tsx";
 import formStore from '../../../stores/formStore.tsx'
 import {observer} from "mobx-react-lite";

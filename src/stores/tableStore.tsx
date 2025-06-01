@@ -1,7 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import {getLimitedTable} from "../api/get/getLimitedTable.tsx";
 import type {Row} from "../types/table"
-import {checkMaxNumberOfFields} from "../utils/utils.ts";
 
 class TableStore {
     table: Row[] = []
@@ -14,17 +13,25 @@ class TableStore {
     }
     //Обновляем максимальное кол. полей в таблице
     updateMaxNumberOfFields(newRows: Row[]){
-        if(this.maxNumberOfFields !== 15){
-            this.maxNumberOfFields = checkMaxNumberOfFields(this.maxNumberOfFields,newRows) //подумать куда грамотнее это можно засунуть, а то какой-то калхоз
+        if(this.maxNumberOfFields >= 15) return;
+        for (const NumberOfFields of newRows) {
+            if (NumberOfFields.numberOfFields === 15) {
+                this.maxNumberOfFields = NumberOfFields.numberOfFields;
+            }
+            if(NumberOfFields.numberOfFields > this.maxNumberOfFields ){
+                this.maxNumberOfFields  = NumberOfFields.numberOfFields;
+            }
         }
     }
-    resetTable() {
+    //сброс формы
+    resetTable () {
         this.table = []
         this.isLoading = false;
         this.lastRow = 0;
         this.maxNumberOfFields = 5
         this.notNewRow = false;
     }
+    //Получаем таблицу
     getTable= async ()=>{
         if(this.isLoading)return;
         try{
@@ -48,6 +55,7 @@ class TableStore {
         }
 
     }
+    //Проверяем появились ли новые компоненты, если да то записываем последнюю новую строку
     checkNewRow = async () =>{
         const res = await getLimitedTable(this.lastRow)
         this.notNewRow = res.length === 0

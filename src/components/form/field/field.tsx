@@ -1,7 +1,7 @@
 import type {ChangeEvent} from 'react';
 import {Box, TextField} from "@mui/material";
 import ButtonDeleteFields from "../button/ButtonDeleteFields.tsx";
-import type {propsFactoryComponent} from "../../../types/utils.d.ts";
+import type {propsFactoryComponent} from "../../../types/props.d.ts";
 import formStore from '../../../stores/formStore.tsx'
 
 const Field = (props:propsFactoryComponent) => {

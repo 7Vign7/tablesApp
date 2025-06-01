@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import type {FormType} from "../types/form"
 import {postRow} from "../api/post/postRow.ts";
-import type {RangeFiveToFifteen} from "../types/utils";
+import type {RangeFiveToFifteen} from "../types/table";
 
 type fieldsType = FormType['fields']
 type errorsType = FormType['errors']
@@ -17,7 +17,7 @@ class FormStore {
     constructor() {
         makeAutoObservable(this);
     }
-    //установка лимита для полей, решил добавить, вдруг приложение нужно расширять
+    //Установка лимита для полей, решил добавить, вдруг приложение нужно расширять
     setLimitations = (limit:limitationsType)=> {
         this.limitations = limit
     }

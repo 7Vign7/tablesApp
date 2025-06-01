@@ -1,5 +1,5 @@
 import {TableCell, TableRow} from "@mui/material";
-import type {PropsRow} from "../../../types/utils.d.ts";
+import type {PropsRow} from "../../../types/props.d.ts";
 
 const TableRowVign = (props:PropsRow) => {
     const {rowData} = props;

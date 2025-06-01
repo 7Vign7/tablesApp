@@ -1,7 +1,7 @@
 import IconButton from "@mui/material/IconButton";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import formStore from '../../../stores/formStore.tsx'
-import type {propsFactoryComponent} from "../../../types/utils.d.ts";
+import type {propsFactoryComponent} from "../../../types/props.d.ts";
 
 
 const ButtonDeleteFields =(props:propsFactoryComponent) => {
