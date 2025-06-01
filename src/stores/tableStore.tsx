@@ -59,7 +59,6 @@ class TableStore {
     checkNewRow = async () =>{
         const res = await getLimitedTable(this.lastRow)
         this.notNewRow = res.length === 0
-        console.log(this.notNewRow)
     }
 }
 
