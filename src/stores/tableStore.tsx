@@ -12,7 +12,7 @@ class TableStore {
         makeAutoObservable(this);
     }
     //Обновляем максимальное кол. полей в таблице
-    updateMaxNumberOfFields(newRows: Row[]){
+    private updateMaxNumberOfFields(newRows: Row[]){
         if(this.maxNumberOfFields >= 15) return;
         for (const NumberOfFields of newRows) {
             if (NumberOfFields.numberOfFields === 15) {

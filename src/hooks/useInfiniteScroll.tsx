@@ -21,5 +21,5 @@ export const useInfiniteScroll = (
         return () => {
             observer.disconnect();
         };
-    }, deps); // важно: сюда передаёшь зависимости
+    }, deps);
 };
